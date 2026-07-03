@@ -1,0 +1,13 @@
+langchain
+langchain-groq
+langchain-community
+sentence-transformers
+chromadb
+beautifulsoup4
+python-dotenv
+streamlit
+fastapi
+uvicorn
+pydantic
+pytest
+httpx

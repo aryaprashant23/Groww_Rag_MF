@@ -1,0 +1,41 @@
+name: Daily Mutual Fund Data Ingestion
+
+on:
+  schedule:
+    # Run at 10:30 AM IST (05:00 AM UTC) every day
+    - cron: '0 5 * * *'
+  workflow_dispatch: # Allow manual triggering from the GitHub UI
+
+jobs:
+  ingest-data:
+    runs-on: ubuntu-latest
+    
+    # Needs permissions to push changes back to the repository
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Data Ingestion Pipeline
+        run: |
+          python src/ingest.py
+
+      - name: Commit and Push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Automated daily ingestion: Update ChromaDB and data files"
+          file_pattern: "chroma_db/** data/**"
+          commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"

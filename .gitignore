@@ -1,0 +1,21 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# Environment Variables
+.env
+
+# Databases & Data
+chroma_db/
+chroma_db_temp/
+data/
+
+# OS Files
+.DS_Store
+Thumbs.db
