@@ -27,8 +27,7 @@ function App() {
     setIsLoading(true)
 
     try {
-      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8001';
-      const response = await fetch(`${API_URL}/chat`, {
+      const response = await fetch('https://web-production-c611f.up.railway.app/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
