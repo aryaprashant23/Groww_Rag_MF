@@ -12,9 +12,8 @@ frontend/dist/
 .env
 
 # Databases & Data
-chroma_db/
+# Removed chroma_db and data from gitignore so they can be deployed to Railway
 chroma_db_temp/
-data/
 
 # OS Files
 .DS_Store

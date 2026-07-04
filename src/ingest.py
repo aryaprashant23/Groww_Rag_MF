@@ -45,6 +45,10 @@ def main():
         
     print(f"Total chunks created: {len(chunks)}")
     
+    if not chunks:
+        print("Error: No chunks were created. This usually means the web scraper was blocked (e.g., by Cloudflare Bot Protection). Aborting ingestion to preserve the old database.")
+        sys.exit(1)
+    
     # Step 4: Vector Storage Setup
     print("\n[Step 4] Initializing BGE embedding model...")
     model_name = "BAAI/bge-small-en-v1.5"
